@@ -18,7 +18,7 @@ from pages.portfolio import show_portfolio
 from pages.watchlist import show_watchlist
 from pages.risk_assessment import show_risk_assessment
 from pages.education import show_education
-from pages.chatbot import show_chatbot
+# from pages.chatbot import show_chatbot
 from pages.about import show_about
 from pages.settings import show_settings
 from utils.database import init_db
