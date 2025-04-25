@@ -1,0 +1,328 @@
+/* Main Styles */
+body {
+    font-family: "Inter", sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+  }
+  
+  /* Header Styles */
+  .main-header {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #4e73df;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sub-header {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 1.5rem 0 1rem 0;
+    color: #4e73df;
+    border-bottom: 2px solid #181b20;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Card Styles */
+  .card {
+    background-color: #181b20;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* .metric-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  } */
+  
+  .metric-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .metric-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  
+  /* Enhanced Card Styles */
+  .highlight {
+    border-left: 4px solid #4e73df;
+  }
+  
+  .signal-card {
+    background-color: #181b20;
+  }
+  
+  .risk-card {
+    background-color: #181b20;
+    border-left: 4px solid #f6c23e;
+  }
+  
+  .fundamental-card {
+    background-color: #181b20;
+    border-left: 4px solid #36b9cc;
+  }
+  
+  .factor-card {
+    background-color: #181b20;
+    border-left: 4px solid #1cc88a;
+  }
+  
+  .news-card {
+    border-left: 4px solid #4e73df;
+  }
+  
+  .news-meta {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .news-link {
+    color: #4e73df;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .news-link:hover {
+    text-decoration: underline;
+  }
+  
+  .business-summary {
+    background-color: #181b20;
+    border-left: 4px solid #36b9cc;
+  }
+  
+  .suitability-card {
+    background-color: #181b20;
+    border-left: 4px solid #1cc88a;
+  }
+  
+  /* Container Styles */
+  .search-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .search-container h3 {
+    color: #4e73df;
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-container p {
+    color: #6b7280;
+  }
+  
+  .metrics-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .signals-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .fundamentals-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .risk-metrics-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .risk-factors-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .actions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Stock Header */
+  .stock-header {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stock-header-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sector-info {
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+  
+  /* Color Classes */
+  .positive {
+    color: #1cc88a;
+  }
+  
+  .negative {
+    color: #e74a3b;
+  }
+  
+  .neutral {
+    color: #6b7280;
+  }
+  
+  /* Progress Bar */
+  .progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e5e7eb;
+    border-radius: 5px;
+    margin: 1rem 0;
+    overflow: hidden;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #4e73df;
+    border-radius: 5px;
+  }
+  
+  /* Button Styles */
+  .stButton > button {
+    background-color: #4e73df;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .stButton > button:hover {
+    background-color: #2e59d9;
+  }
+  
+  /* Tabs Styling */
+  .stTabs [data-baseweb="tab-list"] {
+    gap: 24px;
+    padding-bottom: 10px;
+  }
+  
+  .stTabs [data-baseweb="tab"] {
+    height: 50px;
+    white-space: pre-wrap;
+    background-color: #181b20;
+    color: #ffffff;
+    border-radius: 4px 4px 0px 0px;
+    gap: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .stTabs [aria-selected="true"] {
+    background-color: #4e73df !important;
+    color: white !important;
+  }
+  
+  /* Dark Mode */
+  .dark-mode {
+    background-color: #1f2937;
+    color: #f3f4f6;
+  }
+  
+  .dark-mode .card,
+  .dark-mode .metric-card,
+  .dark-mode .team-card,
+  .dark-mode .glossary-card,
+  .dark-mode .step-card {
+    background-color: #374151;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dark-mode .main-header,
+  .dark-mode .sub-header {
+    color: #60a5fa;
+  }
+  
+  .dark-mode .metric-label,
+  .dark-mode .team-title,
+  .dark-mode .info-text,
+  .dark-mode .footer,
+  .dark-mode .message-timestamp,
+  .dark-mode .small-text {
+    color: #9ca3af;
+  }
+  
+  .dark-mode .progress-bar {
+    background-color: #4b5563;
+  }
+  
+  .dark-mode .progress {
+    background-color: #60a5fa;
+  }
+  
+  .dark-mode .divider::before,
+  .dark-mode .divider::after {
+    border-bottom: 1px solid #4b5563;
+  }
+  
+  .dark-mode .user-message {
+    background-color: #4b5563;
+  }
+  
+  .dark-mode .assistant-message {
+    background-color: #1e40af;
+  }
+  
+  .dark-mode .value-card {
+    background-color: #1e3a8a;
+  }
+  
+  .dark-mode .positive {
+    color: #34d399;
+  }
+  
+  .dark-mode .negative {
+    color: #f87171;
+  }
+  
+  .dark-mode .neutral {
+    color: #9ca3af;
+  }
