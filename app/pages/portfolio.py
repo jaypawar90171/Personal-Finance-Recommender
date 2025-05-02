@@ -7,37 +7,38 @@ import sqlite3
 from datetime import datetime, timedelta
 
 st.markdown("""
-    <style>
-    .metric-card {
-        padding: 1.5rem;
-        border: 1px solid #23262b;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-        background: #181b20; /* Match dark background */
-        color: #f3f6fa;      /* Light text for contrast */
-        text-align: center;
-    }
-    .metric-value {
-        font-size: 2.2rem;
-        font-weight: bold;
-        color: #f3f6fa;
-        margin-bottom: 0.5rem;
-    }
-    .metric-label {
-        font-size: 1.1rem;
-        color: #b0b8c1;
-    }
-    .metric-value.positive, .metric-label.positive {
-        color: #4caf50;
-    }
-    .metric-value.negative, .metric-label.negative {
-        color: #e57373;
-    }     
-    .stColumns {
-        gap: 10px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+<style>
+.metric-card {
+    padding: 1.5rem;
+    border: 1px solid #23262b;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background: #181b20; /* Match dark background */
+    color: #f3f6fa;      /* Light text for contrast */
+    text-align: center;
+}
+.metric-value {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #f3f6fa;
+    margin-bottom: 0.5rem;
+}
+.metric-label {
+    font-size: 1.1rem;
+    color: #b0b8c1;
+}
+.metric-value.positive, .metric-label.positive {
+    color: #4caf50;
+}
+.metric-value.negative, .metric-label.negative {
+    color: #e57373;
+}
+            
+.stColumns {
+    gap: 10px !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 def show_portfolio(user_id):
     st.markdown('<div class="main-header">Portfolio Management</div>', unsafe_allow_html=True)
@@ -207,7 +208,7 @@ def display_portfolio(user_id):
                 conn.commit()
                 
                 st.success(f"Removed {ticker_to_remove} from your portfolio!")
-                st.experimental_rerun()
+                st.rerun()
     
     conn.close()
 
@@ -236,9 +237,8 @@ def add_to_portfolio(user_id):
         if ticker and shares > 0:
             # Fetch stock data to validate ticker and get purchase price
             try:
-                end_date = datetime.now().strftime('%Y-%m-%d')
+                end_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
                 start_date = purchase_date.strftime('%Y-%m-%d')
-                
                 stock_data = yf.download(ticker, start=start_date, end=end_date)
                 
                 if stock_data.empty:

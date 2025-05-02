@@ -1,8 +1,12 @@
+from datetime import datetime
 import streamlit as st
 import pandas as pd
 import yfinance as yf
 import sqlite3
 from utils.stock_utils import get_company_logo
+import smtplib
+from email.message import EmailMessage
+import time
 
 st.markdown("""
 <style>
@@ -46,7 +50,44 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+def send_watchlist_email(to_email, ticker):
+    msg = EmailMessage()
+    msg['Subject'] = f"Confirmation: Stock Added to Your Watchlist:  {ticker}"
+    msg['From'] = "apg111331@gmail.com"
+    msg['To'] = to_email
+    message  = f""" Dear Valued Client,
+
+        We are pleased to confirm that the following stock has been successfully added to your watchlist:
+
+        Stock Name: {ticker} 
+        Date Added: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+        You can monitor this stock and manage your watchlist at any time through your account dashboard.
+
+        Thank you for choosing our platform. If you have any questions, please contact our support team at support@example.com.
+
+        Best regards,
+
+        Finance Recommender
+
+        © 2025 Finance Recommender. All rights reserved."""
+    
+
+    
+    msg.set_content(message)
+
+    # For Gmail, you may need an app password if 2FA is enabled
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login("apg111331@gmail.com", "wcxa pfif frdu fyrn")
+        smtp.send_message(msg)
+
 def show_watchlist(user_id):
+    conn = sqlite3.connect('database/stock_analyzer.db')
+    c = conn.cursor()
+    c.execute("SELECT email FROM users WHERE id = ?", (user_id,))
+    user_email = c.fetchone()[0]
+    conn.close()
+
     st.markdown('<div class="main-header">Watchlist</div>', unsafe_allow_html=True)
     
     # Watchlist tabs
@@ -56,7 +97,7 @@ def show_watchlist(user_id):
         display_watchlist(user_id)
     
     with watchlist_tabs[1]:
-        add_to_watchlist(user_id)
+        add_to_watchlist(user_id, user_email)
 
 def display_watchlist(user_id):
     st.markdown('<div class="sub-header">Your Watchlist</div>', unsafe_allow_html=True)
@@ -155,9 +196,9 @@ def display_watchlist(user_id):
             conn.close()
             
             st.success(f"Removed {ticker_to_remove} from your watchlist!")
-            st.experimental_rerun()
+            st.rerun()
 
-def add_to_watchlist(user_id):
+def add_to_watchlist(user_id, user_email):
     st.markdown('<div class="sub-header">Add to Watchlist</div>', unsafe_allow_html=True)
     
     ticker = st.text_input("Stock Ticker", key="watchlist_ticker").upper()
@@ -187,12 +228,17 @@ def add_to_watchlist(user_id):
                     INSERT INTO watchlist_items (user_id, ticker, added_at)
                     VALUES (?, ?, datetime('now'))
                     """, (user_id, ticker))
-                    
                     conn.commit()
+                    # Fetch user email
+                    c.execute("SELECT email FROM users WHERE id = ?", (user_id,))
+                    user_email = c.fetchone()[0]
+                    conn.close()
+                    # Send notification email
+                    send_watchlist_email(user_email, ticker)
+                    # Show success message
                     st.success(f"Added {ticker} to your watchlist!")
+                    time.sleep(1)  # Wait 1 second so user sees the message
                     st.rerun()
-                
-                conn.close()
                 
             except Exception as e:
                 st.error(f"Error adding stock to watchlist: {e}")

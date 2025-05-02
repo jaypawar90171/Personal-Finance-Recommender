@@ -13,7 +13,7 @@ def show_stock_analysis(user_id):
     st.markdown("""
     <style>
     .news-card {
-        background: white;
+        background: #181b20;
         border: 1px solid #e6e6e6;
         border-radius: 8px;
         padding: 1rem;
@@ -31,7 +31,7 @@ def show_stock_analysis(user_id):
     }
     .news-card p {
         margin: 0.8rem 0;
-        color: #333;
+        color: white;
         font-size: 0.9rem;
         line-height: 1.4;
     }
@@ -40,7 +40,7 @@ def show_stock_analysis(user_id):
         text-align: right;
     }
     .news-footer a {
-        color: #1E88E5;
+        color: white;
         text-decoration: none;
         font-size: 0.9rem;
         font-weight: 500;
@@ -116,7 +116,8 @@ def show_stock_analysis(user_id):
                         st.success(f"Added {ticker} to analysis!")
                         st.experimental_rerun()
                 except:
-                    st.error(f"Error adding {ticker} to analysis.")
+                    print(f"Error adding {ticker} to analysis.")
+                    # st.error(f"Error adding {ticker} to analysis.")
     
     # Display selected stocks for comparison
     if compare_mode and st.session_state.selected_stocks:

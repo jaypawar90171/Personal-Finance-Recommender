@@ -10,9 +10,8 @@ def show_login():
     col1, col2, col3 = st.columns([1, 2, 1])
     
     with col2:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
         
-        # Login form
+        # Login form (removed the section above username input)
         username = st.text_input("Username", key="login_username")
         password = st.text_input("Password", type="password", key="login_password")
         

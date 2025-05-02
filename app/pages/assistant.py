@@ -19,7 +19,7 @@ try:
         st.error("API key file 'GOOGLE_API_KEY.txt' is empty.")
         st.stop()
     # Removed: genai.configure(api_key=api_key) # This function doesn't exist in google.genai
-    st.success("Google AI API key loaded successfully.") # Keep success message for loading
+    # st.success("Google AI API key loaded successfully.") # Keep success message for loading
 except FileNotFoundError:
     st.error("API key file 'GOOGLE_API_KEY.txt' not found. Please create it and add your key.")
     st.stop()
@@ -392,7 +392,7 @@ def get_gemini_response(user_prompt):
 
 # --- Streamlit UI ---
 def show_assistant(user_id):
-    st.title("📈 Stock Analysis Assistant (with Gemini AI)")
+    st.title("📈 Stock Assistant")
     st.caption("Ask about stock prices, SMA, EMA, RSI, MACD, or request a price plot.")
 
     # Initialize chat history in session state if it doesn't exist

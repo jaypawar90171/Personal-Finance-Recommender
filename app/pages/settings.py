@@ -2,6 +2,7 @@ from datetime import datetime
 import streamlit as st
 import sqlite3
 import hashlib
+import pandas as pd
 
 def show_settings(user_id):
     st.markdown('<div class="main-header">Settings</div>', unsafe_allow_html=True)

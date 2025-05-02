@@ -81,7 +81,7 @@ def main():
             if st.button("Logout"):
                 st.session_state.user_id = None
                 st.session_state.username = None
-                st.experimental_rerun()
+                st.rerun()
             
             # Get user's risk profile from database
             conn = sqlite3.connect('database/stock_analyzer.db')
@@ -104,7 +104,7 @@ def main():
                 st.markdown(f"<p>Profile: {risk_profile}</p>", unsafe_allow_html=True)
             
             st.markdown("---")
-            st.markdown("<div class='footer'>© 2023 Stock Analyzer</div>", unsafe_allow_html=True)
+            st.markdown("<div class='footer'>© 2025 Stock Analyzer</div>", unsafe_allow_html=True)
         
         # Main content based on selected page
         if page == "Dashboard":
